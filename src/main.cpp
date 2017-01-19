@@ -14,6 +14,8 @@ int cyan[]    = {  0, 255, 255};
 int blue[]    = {  0,   0, 255};
 int magenta[] = {255,   0, 255};
 
+uint8_t offset = 0;
+
 CRGB ring[RING_LEDS];
 
 int speed() {
@@ -27,11 +29,20 @@ int interval() {
 }
 
 void wipe(int colour[]) {
-  for (int i = 0; i < RING_LEDS; i++) {
-    ring[i].r = colour[0];
-    ring[i].g = colour[1];
-    ring[i].b = colour[2];
+/*  ring[offset % RING_LEDS].r = 127;
+  ring[offset % RING_LEDS].g = 127;
+  ring[offset % RING_LEDS].b = 127;
+  FastLED.show();
+  offset++;
+  delay(speed());
+*/
+  for (int i = 0; i < RING_LEDS - 1; i++) {
+    ring[offset % RING_LEDS].r = colour[0];
+    ring[offset % RING_LEDS].g = colour[1];
+    ring[offset % RING_LEDS].b = colour[2];
+
     FastLED.show();
+    offset = (offset + 1) % RING_LEDS;
     delay(speed());
   }
 }
