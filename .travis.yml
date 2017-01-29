@@ -10,7 +10,7 @@ cache:
 
 install:
   - pip install -U platformio
-  - wget https://github.com/FastLED/FastLED/archive/v3.1.3.tar.gz -O /tmp/fastled.zip
+  - wget https://github.com/FastLED/FastLED/archive/v3.1.3.tar.gz -O /tmp/fastled.tar.gz
   - tar xzvf /tmp/fastled.tar.gz -C /tmp
 
 script:
